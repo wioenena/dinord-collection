@@ -192,11 +192,11 @@ Deno.test("LastKey with negative amount", () => {
 
 Deno.test("FlatMap", () => {
     const coll = new Collection();
+
     assertEquals(
         collect.flatMap((v) => coll.set(v, v)),
         coll
     );
-
 });
 
 Deno.test("Intersect", () => {
@@ -209,7 +209,7 @@ Deno.test("Intersect", () => {
     assertEquals(
         collect.intersect(clone).size,
         3
-    )
+    );
 });
 
 
@@ -246,7 +246,7 @@ Deno.test("Reduce", () => {
     assertEquals(
         collect.reduce<number>((a, c) => a + c, 0),
         10
-    )
+    );
 });
 
 
