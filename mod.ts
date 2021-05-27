@@ -31,9 +31,8 @@ export class Collection<K, V> extends Map<K, V> {
         if (typeof thisArg !== "undefined") fn = fn.bind(thisArg);
 
         const result: T[] = [];
-        for (const [key, value] of this) {
+        for (const [key, value] of this)
             result.push(fn(value, key, this));
-        }
 
         return result;
     }
@@ -53,11 +52,9 @@ export class Collection<K, V> extends Map<K, V> {
 
         const result = new Collection<K, V>();
 
-        for (const [key, value] of this) {
-
+        for (const [key, value] of this)
             if (fn(value, key, this))
                 result.set(key, value);
-        }
 
         return result;
     }
@@ -75,10 +72,9 @@ export class Collection<K, V> extends Map<K, V> {
 
         if (typeof thisArg !== "undefined") fn = fn.bind(thisArg);
 
-        for (const [key, value] of this) {
+        for (const [key, value] of this)
             if (fn(value, key, this))
                 return true;
-        }
 
         return false;
     }
@@ -96,10 +92,9 @@ export class Collection<K, V> extends Map<K, V> {
 
         if (typeof thisArg !== "undefined") fn = fn.bind(thisArg);
 
-        for (const [key, value] of this) {
+        for (const [key, value] of this)
             if (!fn(value, key, this))
                 return false
-        }
 
         return true;
     }
@@ -113,11 +108,9 @@ export class Collection<K, V> extends Map<K, V> {
      */
     public equals(collection: Collection<K, V>): boolean {
 
-        for (const [key, value] of collection) {
-            if (value === this.get(key) && collection.size === this.size) {
+        for (const [key, value] of collection)
+            if (value === this.get(key) && collection.size === this.size)
                 return true;
-            }
-        }
 
         return false;
     }
@@ -150,15 +143,13 @@ export class Collection<K, V> extends Map<K, V> {
     public difference(other: Collection<K, V>): Collection<K, V> {
         const clone = new Collection<K, V>();
 
-        for (const [key, value] of this) {
+        for (const [key, value] of this)
             if (!other.has(key))
                 clone.set(key, value);
-        }
 
-        for (const [key, value] of other) {
+        for (const [key, value] of other)
             if (!this.has(key))
                 clone.set(key, value);
-        }
 
         return clone;
     }
@@ -190,10 +181,9 @@ export class Collection<K, V> extends Map<K, V> {
 
         if (typeof thisArg !== "undefined") fn = fn.bind(thisArg);
 
-        for (const [key, value] of this) {
+        for (const [key, value] of this)
             if (fn(value, key, this))
                 return key;
-        }
 
         return undefined;
     }
@@ -356,9 +346,8 @@ export class Collection<K, V> extends Map<K, V> {
 
         const result = new Collection<K, T>();
 
-        for (const [key, value] of this) {
+        for (const [key, value] of this)
             result.set(key, fn(value, key, this));
-        }
 
         return result;
     }
@@ -381,12 +370,11 @@ export class Collection<K, V> extends Map<K, V> {
             new Collection<K, V>()
         ];
 
-        for (const [key, value] of this) {
+        for (const [key, value] of this)
             if (fn(value, key, this))
                 result[0].set(key, value);
             else
                 result[1].set(key, value)
-        }
 
         return result;
     }
@@ -442,9 +430,10 @@ export class Collection<K, V> extends Map<K, V> {
 
         if (typeof initalValue !== "undefined") {
             accumulator = initalValue;
-            for (const [k, v] of this) {
+
+            for (const [k, v] of this)
                 accumulator = fn(accumulator, v, k, this);
-            }
+
             return accumulator;
         }
 
@@ -477,9 +466,8 @@ export class Collection<K, V> extends Map<K, V> {
 
         this.clear();
 
-        for (const [k, v] of entries) {
+        for (const [k, v] of entries)
             this.set(k, v);
-        }
 
         return this;
     }
