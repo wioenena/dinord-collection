@@ -137,3 +137,27 @@ Deno.test('Collection.sweep', () => {
   );
   assertEquals(clone.size, 2);
 });
+
+Deno.test('Collection.array', () => {
+  const result = collection.array();
+  assertEquals(result.length, 5);
+  assertEquals(result, [
+    ['0', 0],
+    ['1', 1],
+    ['2', 2],
+    ['3', 3],
+    ['4', 4],
+  ]);
+});
+
+Deno.test('Collection.keyArray', () => {
+  const result = collection.keyArray();
+  assertEquals(result.length, 5);
+  assertEquals(result, ['0', '1', '2', '3', '4']);
+});
+
+Deno.test('Collection.valueArray', () => {
+  const result = collection.valueArray();
+  assertEquals(result.length, 5);
+  assertEquals(result, [0, 1, 2, 3, 4]);
+});
